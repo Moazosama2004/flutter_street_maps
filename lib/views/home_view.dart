@@ -40,13 +40,34 @@ class HomeView extends StatelessWidget {
                 doctors.map((doc) {
                   return Marker(
                     point: LatLng(doc["lat"], doc["lng"]),
-                    width: 80,
+                    width: 120,
                     height: 80,
                     builder:
-                        (ctx) => Icon(
-                          Icons.local_hospital,
-                          color: Colors.red,
-                          size: 40,
+                        (ctx) => Column(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 6,
+                                vertical: 2,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.black87,
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              child: Text(
+                                doc["name"],
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            const Icon(
+                              Icons.local_hospital,
+                              color: Colors.red,
+                              size: 36,
+                            ),
+                          ],
                         ),
                   );
                 }).toList(),
